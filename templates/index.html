@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} Elite Estates - Oklahoma City's #1 Luxury Real Estate Company {% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-tag">Oklahoma City & Surrounding Areas</span>
+        <h1>Find the home of your dreams</h1>
+        <p class="hero-sub">{{ stats.cnt }} active listings in the area </p>
+    </div>
+    <div class="hero-accent"></div>
+</section>
+
+<section class="section featured-section">
+    <div class="section-header">
+        <h2>Featured Listings</h2>
+    </div>
+    <div class="card-grid">
+        {% for listing in listings %}
+        <div class="card-img-wrap">
+            <div class="card-img-placeholder">
+                {{ listing.property_type[0].upper()}}
+            </div>
+            <span class="badge badge-{{ listing.property_type}}">{{ listing.property_type.tile()}}</span>
+        </div>
+        <div class="card-body">
+            <div class="card-price">${{ listing.price }}</div>
+            <h3 class="card-tile">{{ listing.title }}</h3>
+            <p class="card-address">{{ listing.address }}, {{ lsiting.city }}, {{ listing.state }}</p>
+
+            
+        </div>
+    </div>
+</section>
