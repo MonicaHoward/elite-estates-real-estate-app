@@ -23,7 +23,7 @@ def index():
                 FROM properties
                 LEFT JOIN agents ON agents.id = properties.agent_id
                 WHERE properties.status = 'active' AND properties.featured = 1
-                ORDER BY properties.created at DESC LIMIT 3 """)
+                ORDER BY properties.created_at DESC LIMIT 3 """)
     
     featured_properties = cur.fetchall()
     cur.execute("SELECT COUNT(*) as cnt FROM  properties WHERE status = 'active'")

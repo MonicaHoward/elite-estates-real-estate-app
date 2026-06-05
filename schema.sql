@@ -7,7 +7,7 @@ CREATE TABLE agents (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL,
-    photo_url VARCHAR(x255),
+    photo_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE property_images (
     property_id INT NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     is_primary TINYINT(1) DEFAULT 0,
-    sort_order TINYINT UNSIGNEED DEFUALT 0,
+    sort_order TINYINT UNSIGNED DEFUALT 0,
     FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
 );
 

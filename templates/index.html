@@ -4,7 +4,7 @@
 {% block content %}
 <section class="hero">
     <div class="hero-inner">
-        <span class="hero-tag">Oklahoma City & Surrounding Areas</span>
+        <span class="hero-tag">Oklahoma  City & Surrounding Areas</span>
         <h1>Find the home of your dreams</h1>
         <p class="hero-sub">{{ stats.cnt }} active listings in the area </p>
     </div>
@@ -16,19 +16,25 @@
         <h2>Featured Listings</h2>
     </div>
     <div class="card-grid">
-        {% for listing in listings %}
+        {% for listing in featured_properties %}
         <div class="card-img-wrap">
             <div class="card-img-placeholder">
                 {{ listing.property_type[0].upper()}}
             </div>
-            <span class="badge badge-{{ listing.property_type}}">{{ listing.property_type.tile()}}</span>
+            <span class="badge badge-{{ listing.property_type}}">{{ listing.property_type.title()}}</span>
         </div>
         <div class="card-body">
             <div class="card-price">${{ listing.price }}</div>
-            <h3 class="card-tile">{{ listing.title }}</h3>
-            <p class="card-address">{{ listing.address }}, {{ lsiting.city }}, {{ listing.state }}</p>
-
-            
+            <h3 class="card-title">{{ listing.title }}</h3>
+            <p class="card-address">{{ listing.address }}, {{ listing.city }}, {{ listing.state }}</p>
+            <div class="card-meta">
+                {% if listing.bedrooms %}<span>bedrooms: {{ listing.bedrooms }}</span>{% endif %}
+                <span>bathrooms: {{listing.bathrooms }}</span>
+                <span>square feet: {{ listing.sqft }}</span>
+            </div>
+            <p class="card-agent">Agent ID: {{listing.agent_id }}</p>
         </div>
+            {% endfor %}
     </div>
 </section>
+{% endblock %}
